@@ -1,26 +1,37 @@
 @import "tailwindcss";
 
-:root {
-  --background: #f5f5f5;
-  --foreground: #2d3748;
+@theme {
+  --color-win-bg: #c0c0c0;
+  --color-win-white: #ffffff;
+  --color-win-silver: #dfdfdf;
+  --color-win-gray-dark: #808080;
+  --color-win-black: #000000;
+  --color-win-blue: #000080;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@utility border-win-out {
+  border-width: 2px;
+  border-color: var(--color-win-white) var(--color-win-black)
+    var(--color-win-black) var(--color-win-white);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #1a202c;
-    --foreground: #e2e8f0;
-  }
+
+@utility border-win-in {
+  border-width: 2px;
+  border-color: var(--color-win-gray-dark) var(--color-win-white)
+    var(--color-win-white) var(--color-win-gray-dark);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  background-image: url("/assets/images/wallpaper.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.element {
+  border-style: outset;
+  border-width: 5px; /* Optional: adjust width */
+  border-color: #c0c0c0; /* Optional: adjust color for effect */
 }
