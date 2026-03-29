@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${Win95Font.className} ${geistMono.variable} antialiased`}
+        className={`${Win95Font.className} ${geistMono.variable}`}
       >
         {children}
       </body>

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-win-bg: #c0c0c0;
+  --color-win-bg: #C0C0C0;
   --color-win-white: #ffffff;
   --color-win-silver: #dfdfdf;
   --color-win-gray-dark: #808080;
@@ -28,6 +28,9 @@ body {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  image-rendering: pixelated;       /* Chrome / Safari */
+  image-rendering: crisp-edges;      /* Firefox */
+  -ms-interpolation-mode: nearest-neighbor;
 }
 
 .element {
