@@ -1,12 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-win-bg: #C0C0C0;
+  --color-win-bg: #c0c0c0;
   --color-win-white: #ffffff;
   --color-win-silver: #dfdfdf;
   --color-win-gray-dark: #808080;
   --color-win-black: #000000;
   --color-win-blue: #000080;
+  --cursor-pointer: url("/assets/cursor/pointer.cur"), pointer;
+  --cursor-default: url("/assets/cursor/arrow.cur"), auto;
 }
 
 @utility border-win-out {
@@ -14,7 +16,6 @@
   border-color: var(--color-win-white) var(--color-win-black)
     var(--color-win-black) var(--color-win-white);
 }
-
 
 @utility border-win-in {
   border-width: 2px;
@@ -28,9 +29,10 @@ body {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  image-rendering: pixelated;       /* Chrome / Safari */
-  image-rendering: crisp-edges;      /* Firefox */
+  image-rendering: pixelated; /* Chrome / Safari */
+  image-rendering: crisp-edges; /* Firefox */
   -ms-interpolation-mode: nearest-neighbor;
+  cursor: var(--cursor-default);
 }
 
 .element {

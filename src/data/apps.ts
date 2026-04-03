@@ -1,29 +1,44 @@
-import { AppType } from "@/types/types"
+import { AppType } from "@/types/types";
 
 export const Apps: AppType[] = [
-    {
-        id: 0,
-        name: "Sample 1",
-        icon: "folder-48x48",
-    },
-    {
-        id: 1,
-        name: "Sample 2",
-        icon: "folder-48x48",
-    },
-    {
-        id: 2,
-        name: "Sample 3",
-        icon: "folder-48x48",
-    },
-    {
-        id: 3,
-        name: "Sample 4",
-        icon: "folder-48x48",
-    },
-    {
-        id: 4,
-        name: "Sample 5",
-        icon: "folder-48x48",
-    },
-]
+  {
+    id: 0,
+    name: "About",
+    icon: "info-32x32-8bpp",
+  },
+  {
+    id: 1,
+    name: "Resume",
+    icon: "my-documents-folder-32x32",
+    type: "folder"
+  },
+  {
+    id: 2,
+    name: "Images",
+    icon: "folder-32x32",
+    type: "folder"
+  },
+  {
+    id: 3,
+    name: "IE",
+    icon: "internet-explorer-32x32",
+  },
+  {
+    id: 4,
+    name: "Run...",
+    icon: "run-32x32",
+  },
+];
+
+export const SpecialApps: AppType[] = [
+  {
+    id: 6,
+    name: "Suspend",
+    icon: "sleep-32x32",
+  },
+  {
+    id: 7,
+    name: "Shut Down",
+    icon: "shutdown-32x32",
+  },
+];

@@ -18,7 +18,7 @@ function Taskbar() {
 
       {/* Start button */}
       <button
-        className={`flex self-center px-1.5 py-0.5 font-bold cursor-pointer ${isOpen ? "border-win-in" : "border-win-out"}`}
+        className={`flex self-center px-0.5 py-0.5 font-bold cursor-pointer ${isOpen ? "border-win-in" : "border-win-out"}`}
         onClick={() => setIsOpen(!isOpen)}
       >
         <div
