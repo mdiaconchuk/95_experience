@@ -3,5 +3,8 @@ export interface AppType {
     name: string;
     icon: string;
     type?: 'folder' | 'other';
-    component?: React.ComponentType<unknown>;
+}
+
+export interface AppContextType extends AppType {
+    isMinimized: boolean;
 }

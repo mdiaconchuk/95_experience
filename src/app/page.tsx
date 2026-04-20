@@ -1,15 +1,20 @@
 import Taskbar from "@/components/Taskbar/Taskbar";
+import AppList from "@/components/Desktop/AppList";
+import { Apps } from "@/data/apps";
 
 export default function Home() {
   return (
     <div className="min-h-screen">
       <main className="min-h-screen w-full max-w-3xl">
-        <p className="px-32 py-12">MAIN COMPONENT / MONITOR</p>
-        <div className="ml-30 *:my-3">
-        <img src="/assets/images/macarena.gif" alt="Macarena" className="h-40 w-30"/>
-        <img src="https://web.archive.org/web/20091023003314im_/http://geocities.com/MotorCity/Track/6731/car2anim.gif"/>
-        <img src="https://web.archive.org/web/20091026235359im_/http://ar.geocities.com/mcalniquer/images/bienvenidos.gif"/>
-        <img src="https://web.archive.org/web/20091026235359im_/http://ar.geocities.com/mcalniquer/images/mail.gif"/>
+        <div className="flex flex-col flex-wrap content-start h-[calc(100vh-36px)] p-2">
+          {Apps.map((app, index) => (
+            <AppList
+              key={index}
+              index={index}
+              name={app.name}
+              icon={app.icon}
+            />
+          ))}
         </div>
         <Taskbar />
       </main>
