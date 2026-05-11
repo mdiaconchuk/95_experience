@@ -1,36 +1,62 @@
-import { createContext, useState, useContext, ReactNode } from "react";
-import { AppContextType } from "@/types/types";
+// openApp, closeApp, toggleMinimize y focusApp
+"use client";
+import { createContext, ReactNode, useState } from "react";
+import { AppType } from "@/types/types";
 
-// 1. Definimos qué funciones va a tener nuestro Windows
-interface WinContext {
-  apps: AppContextType[];
-  openApp: (id: number) => void;
-  closeApp: (id: number) => void;
+export const AppContext = createContext<AppContextInterface | null>(null);
+
+interface AppContextInterface {
+  openedApps: AppType[];
+  openApp: (app: AppType) => void;
 }
 
-const WinContext = createContext<WinContext | undefined>(undefined);
+export const AppProvider = ({ children }: { children: ReactNode }) => {
+  const [openedApps, setOpenedApps] = useState<AppType[]>([]);
+  const openApp = (app: AppType): void => {
+    const alreadyOpen: boolean = openedApps.some(
+      (opened) => opened.id === app.id,
+    );
+    // Check if app is already open
+    if (alreadyOpen) {
+      setOpenedApps(
+        openedApps.map((item) =>
+          item.id === app.id
+            ? { ...item, isMinimized: false, zIndex: openedApps.length + 1 }
+            : item,
+        ),
+      );
+    } else {
+      // If not open:
+      const newInstance: AppType = {
+        ...app,
+        isOpen: true,
+        isMinimized: false,
+        zIndex: openedApps.length + 1,
+      };
 
-export const WinProvider = ({ children, initialApps }: { children: ReactNode, initialApps: AppContextType[] }) => {
-  const [apps, setApps] = useState(initialApps);
-
-  // LA LÓGICA: Cuando llamás a esta función, React refresca TODO lo que use el context
-  const openApp = (id: number) => {
-    setApps(current => current.map(app => 
-      app.id === id ? { ...app, isOpen: true, isMinimized: false } : app
-    ));
+      // Add the app to array:
+      setOpenedApps([...openedApps, newInstance]);
+    }
   };
 
-  const closeApp = (id: number) => {
-    setApps(current => current.map(app => 
-      app.id === id ? { ...app, isOpen: false } : app
-    ));
+  /* const closeApp = () => {
+  Debería cerrar (dejar de renderizar) el componente principal de la aplicación misma,
+  a la vez que hacer lo mismo en la barra de tareas.
+} */
+
+  /* const toggleApp = () => {
+  Debería minimizar la aplicación: Mantener la etiqueta en la taskbar pero debe
+  dejar de renderizar el componente principal.
+} */
+
+  /* const focusApp = () => {
+  Debería aumentar el zIndex del componente principal de la aplicación 
+} */
+
+  const data = {
+    openedApps,
+    openApp,
   };
 
-  return (
-    <WinContext.Provider value={{ apps, openApp, closeApp }}>
-      {children}
-    </WinContext.Provider>
-  );
+  return <AppContext.Provider value={data}>{children}</AppContext.Provider>;
 };
-
-export const useWindows = () => useContext(WinContext)!;
