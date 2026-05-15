@@ -23,6 +23,10 @@
     var(--color-win-white) var(--color-win-gray-dark);
 }
 
+.windowControlBtn {
+ @apply size-4 bg-win-bg border-win-out active:border-win-in flex items-center justify-center focus:outline-none
+}
+
 body {
   color: black;
   background-image: url("/assets/images/wallpaper.png");
