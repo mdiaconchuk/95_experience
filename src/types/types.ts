@@ -6,10 +6,11 @@ export interface AppType {
     icon: string;
     taskbarIcon: string | null;
     type?: 'folder' | 'other';
-    component?: React.ComponentType
+    component?: React.ComponentType<any>;
     // --- App Manager ---
     isOpen?: boolean;
     isMinimized?: boolean;
     isMaximized?: boolean;
+    isFocused?: boolean;
     zIndex?: number;
 }

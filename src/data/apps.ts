@@ -1,5 +1,4 @@
 import { AppType } from "@/types/types";
-import Window from "@/components/AppWindow/AppWindow";
 import About from "@/components/AppWindow/About";
 
 export const Apps: AppType[] = [

@@ -42,8 +42,10 @@ export default function Home() {
               {/* @ts-ignore - Por si TS chilla con el componente dinámico */}
               {typeof Component === 'function' ? <Component app={app} /> : Component}
             </div>
+            
           );
         })}
+        
       </main>
 
       {/* Taskbar */}

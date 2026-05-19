@@ -1,10 +1,13 @@
 import AppWindow from "./AppWindow";
+import { AppType } from "@/types/types";
 
-function About() {
+function About({ app }: { app: AppType }) {
   return (
-    <div>
-      <AppWindow title="About" icon="info-16x16-8bpp" children={<p>hola</p>}/>
-    </div>
+    <AppWindow app={app}>
+      <div className="p-4 h-full">
+        <p>This is the About app content.</p>
+      </div>
+    </AppWindow>
   );
 }
 

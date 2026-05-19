@@ -1,12 +1,17 @@
 import Image from "next/image";
 import { AppType } from "@/types/types";
+import { AppContext } from "@/context/AppContext";
+import { useContext } from "react";
 
 interface AppTagProps {
   app: AppType;
 }
 
 function AppTag({ app }: AppTagProps) {
-  const isActive = !app.isMinimized;
+  const isActive = app.isFocused;
+  const context = useContext(AppContext);
+  if(!context) { return null }
+  const { focusApp } = context;
 
   return (
     <button
@@ -14,6 +19,7 @@ function AppTag({ app }: AppTagProps) {
         active:border-win-in ${
           isActive ? "border-win-in font-bold" : "border-win-out font-normal"
         }`}
+        onClick={() => focusApp(app)}
     >
       <div className="flex items-center gap-x-1 w-full px-1 overflow-hidden">
         <Image
